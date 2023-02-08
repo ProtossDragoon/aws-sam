@@ -37,7 +37,7 @@ def lambda_handler(event, context):
             response_payload = {"message": "hello ml"}
         elif (event['httpMethod'] == 'POST' and 
               (event['path'] in ['/predict', '/predict/'])):
-            # 필요한 특징이 모두 있는지 확인
+            # 필요한 피처들이 모두 있는지 확인
             body = json.loads(event['body'])
             if myopslib.get_required_features() <= set(body.keys()):
                 prediction = myopslib.predict(body)
@@ -53,7 +53,7 @@ def lambda_handler(event, context):
                 f"path: {event['path']}, "
                 f"httpMethod: {event['httpMethod']}"}
     else:
-        # 필요한 특징이 모두 있는지 확인
+        # 필요한 피처들이 모두 있는지 확인
         if myopslib.get_required_features() <= set(event.keys()):
             prediction = myopslib.predict(event)
             response_payload = {"message": 

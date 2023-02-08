@@ -40,7 +40,7 @@ def retrain(p_new="./mlp-model"):
     train_dataset = dataset.sample(frac=0.8, random_state=0)
     test_dataset = dataset.drop(train_dataset.index)
 
-    # 특징과 레이블 분리
+    # 피처와 레이블 분리
     train_features = train_dataset.copy()
     test_features = test_dataset.copy()
 
@@ -63,7 +63,7 @@ def retrain(p_new="./mlp-model"):
 
 
 def get_required_features() -> set:
-    """필요한 특징명 집합을 반환하는 함수"""
+    """필요한 피처 이름 집합을 반환하는 함수"""
     return {
         "Cylinders",
         "Displacement",
@@ -76,7 +76,7 @@ def get_required_features() -> set:
 
 
 def format_x(payload) -> np.ndarray:
-    """입력받은 특징 값들을 넘파이 배열로 변환하는 함수"""
+    """입력받은 피처들을 넘파이 배열로 변환하는 함수"""
     country = {
         "Europe": 0.0,
         "Japan": 0.0,
@@ -112,7 +112,7 @@ def format_y(y_tensor) -> list:
 
 
 def predict(x_json) -> list:
-    """입력받은 특징 값들을 사용해 자동차의 연비를 추론하는 함수
+    """입력받은 피처들을 사용해 자동차의 연비를 추론하는 함수
 
     Input sample:
     {
