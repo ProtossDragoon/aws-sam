@@ -2,7 +2,7 @@ FROM public.ecr.aws/lambda/python:3.8-arm64
 
 COPY requirements.txt ./
 
-RUN python3.8 -m pip install -r requirements.txt
+RUN python3.8 -m pip install -r requirements.txt --no-cache-dir
 
 COPY mlp-model/ mlp-model/
 
